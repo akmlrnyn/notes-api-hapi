@@ -104,4 +104,4 @@ const editNoteById = (request, h) => {
 }
     
 
-module.exports = { addNoteHandler, getAllNotesHandler, getNoteByIDHandler }
+module.exports = { addNoteHandler, getAllNotesHandler, getNoteByIDHandler, editNoteById }
