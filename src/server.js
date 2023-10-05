@@ -1,20 +1,22 @@
-const Hapi = require('@hapi/hapi')
-const notes = require('./notes')
-const routes = require('./routes')
+const Hapi = require('@hapi/hapi');
+const routes = require('./routes');
+const notes = require('./notes.js');
 
 const init = async () => {
-    const server = Hapi.server({
-        port: 5000,
-        host: 'localhost',
-        routes: {
-            cors: {
-              origin: ['http://notesapp-v1.dicodingacademy.com/'],
-            },
-          },
-    }) 
+  const server = Hapi.server({
+    port: 5000,
+    host: 'localhost',
+    routes: {
+      cors: {
+        origin: ['*'],
+      },
+    },
+  });
 
-    await server.start()
-    console.log(`server dimulai pada ${server.info.uri}`)
+  server.route(routes);
+
+  await server.start();
+  console.log(`server is running in ${server.info.uri}`);
 };
 
 init();
